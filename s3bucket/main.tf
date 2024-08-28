@@ -4,7 +4,7 @@ variable "bucket_name" {
 
 variable "instance_type" {
   type        = string
-  description = "Choose Instance Type"
+  description = "Choose Instance Type.Valid values are item1,item2 and item3"
   validation {
     condition = contains(["item1", "item2", "item3"], var.instance_type)
     error_message = "Valid values for var: test_variable are (item1, item2, item3)."
