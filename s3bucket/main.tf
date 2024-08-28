@@ -15,6 +15,16 @@ variable "instance_type" {
     error_message = "Valid values for var: instance_type are (t2.small, t2.medium, t3.large)."
   }
 }
+
+variable "instance_group" {
+  type        = string
+  description = "Choose suitable group of instance.\nAllowed values are Group_1, Group_2, Group_3"
+  validation {
+    condition = contains(["Group_1", "Group_2", "Group_3"], var.instance_group)
+    error_message = "Valid values for var: instance_group are (Group_1, Group_2, Group_3)."
+  }
+}
+
 resource "random_string" "random" {
   length           = 16
   special          = true
