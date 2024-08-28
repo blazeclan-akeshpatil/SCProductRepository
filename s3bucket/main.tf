@@ -3,8 +3,12 @@ variable "bucket_name" {
 }
 
 variable "instance_type" {
-  type = list(string)
-  default = ["t2.micro", "t2.medium"]
+  type        = string
+  description = "Choose Instance Type"
+  validation {
+    condition = contains(["item1", "item2", "item3"], var.instance_type)
+    error_message = "Valid values for var: test_variable are (item1, item2, item3)."
+  }
 }
 
 resource "aws_s3_bucket" "bucket" {
